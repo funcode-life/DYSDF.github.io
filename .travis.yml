@@ -2,12 +2,20 @@ sudo: false
 language: node_js
 node_js:
   - 14 # use nodejs LTS
-cache: npm
+cache:
+  - directories:
+    - node_modules
+
+install:
+  - npm i -d
+
 branches:
   only:
     - master
+
 script:
-  - hexo generate
+  - npm run build
+
 deploy:
   provider: pages
   skip-cleanup: true
