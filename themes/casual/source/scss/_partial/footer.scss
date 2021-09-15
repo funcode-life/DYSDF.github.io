@@ -1,15 +1,13 @@
 footer {
   .copyright {
+    display: flex;
     padding: 20px;
     text-align: center;
     background-color: #303233;
-    .container {
-      overflow: hidden;
-      .col-6 {
-        width: 50%;
-        float: left;
-      }
+    .col-6 {
+      flex: 1 1 50%;
     }
+
     .site-info {
       color: rgba(255,255,255,0.5);
       font-size: 14px;

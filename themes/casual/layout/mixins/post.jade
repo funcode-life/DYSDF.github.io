@@ -2,27 +2,31 @@
 mixin posts()
   .post-list
     - page.posts.each(function (item) {
-    article.post-list-article
-      figure.post-thumbnail
-        - if (item.bgimage)
-          a(href= url_for(item.path))
-            img(src=item.bgimage)
-        - else
-          a(href= url_for(item.path))
-            img(src= url_for("image/default_thumbnail.jpg"))
-      header.post-header
-        .post-meta
-          span.post-date
-            != full_date(item.date, 'll')
-          span.post-tag
+      article.post-article
+        .post-article__header
+          - if (item.categories.length)
+            a.post-article__category(href= url_for(item.categories.toArray()[0].path))
+              i(class=['fa', 'fa-bookmark'])
+              span= item.categories.toArray()[0].name
+          h3.post-article__title
+            a(href= url_for(item.path))
+              != item.title
+        .post-article__meta
+          - if (item.author)
+            span.post-article__author
+              i(class=['fa', 'fa-user'])
+              span= item.author
+          span.post-article__date
+            i(class=['fa', 'fa-calendar'])
+            span!= full_date(item.date, 'YYYY-MM-DD')
+          span.post-article__tags
             - if (item.tags.length)
-              a(href= url_for(item.tags.toArray()[0].path))
-                != item.tags.toArray()[0].name
-        h3.post-title
-          a(href= url_for(item.path))
-            != item.title
-      .post-excerpt
-        != item.excerpt
+              i(class=['fa', 'fa-tags'])
+              each tag in item.tags.toArray()
+                a(href= url_for(tag.path))
+                  != tag.name
+        .post-article__excerpt
+          != (item.excerpt || '').replace(/<\/?[^>]+>/, '')
     - })
 
 //- Archive | Tags Page
@@ -36,30 +40,40 @@ mixin postList()
         - year = change ? itemYear : year;
         if change
           h2.archive-year!=year
-        article.post-list-article
-          span.post-date
+        article.post-article
+          span.post-article__date
             != full_date(item.date, 'MMMM Do')
-          span.post-title
+          span.post-article__title
             a(href= url_for(item.path))
               != item.title
     - })
 
 //- Post Page
 mixin post(item)
-  .post
-    article.post-block
-      h1.post-title
-        != item.title
-      span.post-date
-        != full_date(item.date, 'll')
-      if item.tags && item.tags.length
-        span.post-tag
-          each tag in item.tags.toArray()
-            a(href= url_for(tag.path))
-              != tag.name
-      span.post-review
-        != "阅读次数 : "
-        span(data-hk-page="current") -
+  .post-item
+    article.post-article
+      .post-article__header
+        h3.post-article__title
+          != item.title
+        .post-article__meta
+          span.post-article__date
+            i(class=['fa', 'fa-calendar'])
+            span!= full_date(item.date, 'YYYY-MM-DD')
+          - if (item.categories.length)
+            span.post-article__category(href= url_for(item.categories.toArray()[0].path))
+              i(class=['fa', 'fa-bookmark'])
+              span= item.categories.toArray()[0].name
+          span.post-article__tags
+            - if (item.tags.length)
+              i(class=['fa', 'fa-tags'])
+              each tag in item.tags.toArray()
+                a(href= url_for(tag.path))
+                  != tag.name
+          span.post-article__review
+            i(class=['fa', 'fa-eye'])
+            span
+              span 阅读次数:
+              span#busuanzi_value_page_pv -
       - if (item.bgimage)
         img.bgimage(src=item.bgimage)
       .post-content

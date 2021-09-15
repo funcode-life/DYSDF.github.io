@@ -3,6 +3,8 @@
     span
   include nav_menus
   form#search-form.nav-item
+    label.trigger-btn(for="local-search-input")
+      i(class=['fa', 'fa-search'])
     input(
       type="text"
       id="local-search-input"
@@ -14,5 +16,8 @@
       autocorrect="off"
       required
     )
-    div#local-search-reset(onclick="resetSearch()")
-  div#local-search-result
+    i#local-search-reset(
+      class=['fa', 'fa-close']
+      onclick="resetSearch()"
+    )
+    div#local-search-result

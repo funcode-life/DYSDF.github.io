@@ -10,10 +10,10 @@ favicon: /favicon.ico
 weixin: /weixin.jpg
 
 social:
-  github: http://github.com/littlewin-wang
-  twitter: http://twitter.com/littlewin_wang
-  weibo: http://weibo.com/fredinweibo
-  mail: mailto:littlewin.wang@gmail.com
+  github: https://github.com/DYSDF
+  # twitter: http://twitter.com/littlewin_wang
+  # weibo: http://weibo.com/fredinweibo
+  mail: mailto:admin@duan-ya.com
 
 # Comment
 # e.g uyan: 2128137

@@ -100,12 +100,6 @@ header {
         transform-origin: 100%;
       }
     }
-
-    .container {
-      flex-grow: 1;
-      flex-shrink: 1;
-      height: 100%;
-    }
   }
   .nav-item {
     display: inline-block;
@@ -137,7 +131,6 @@ header {
     visibility: hidden;
     opacity: 0;
     transition: opacity .4s;
-    content: none;
     z-index: 9;
   }
 
@@ -145,43 +138,58 @@ header {
     display: flex;
     align-items: center;
     position: absolute;
-    right: 10%;
+    right: 10px;
     top: 0;
     bottom: 0;
+    color: initial;
+
+    .trigger-btn {
+      position: absolute;
+      top: 11px;
+      right: 4px;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      z-index: -1;
+      font-size: 1.4em;
+      color: white;
+    }
 
     input {
       height: 32px;
-      width: 32px;
-      padding: 0 1em;
+      width: 0;
+      padding: 0 16px;
       border: none;
       border-radius: 16px;
-      color: initial;
       background-color: white;
-      transition: width 600ms;
+      transition: width 300ms, opacity 300ms;
+      outline: none;
+      opacity: 0;
 
       &:focus {
         width: 150px;
+        padding-right: 32px;
+        opacity: 1;
       }
     }
-    div#local-search-reset {
-      display: none;
-      position: relative;
-      width: 24px;
-      height: 18px;
 
-      &:before, &:after {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 2px;
-        height: 100%;
-        background-color: white;
-        content: "";
-        transform-origin: 50%;
-        transform: rotate(45deg);
-      }
-      &:after {
-        transform: rotate(-45deg);
+    #local-search-reset {
+      display: none;
+      position: absolute;
+      top: 1em;
+      right: .5em;
+      width: 1em;
+      height: 1em;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    &.searching {
+      input {
+        width: 150px;
+        padding-right: 32px;
+        opacity: 1;
       }
     }
   }
@@ -189,8 +197,8 @@ header {
   div#local-search-result {
     position: absolute;
     top: 46px;
-    right: 10%;
-    width: calc(170px + 10%);
+    left: 0;
+    right: 0;
     max-height: 600px;
     background-color: #252626;
     color: #ccc;

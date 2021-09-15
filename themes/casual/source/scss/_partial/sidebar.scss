@@ -38,53 +38,61 @@
   }
   .widget {
     margin: 0 0 20px 0;
-    padding: 20px;
     border-radius: 2px;
     color: #555;
     background: #f6f6f6;
     font-size: 0.933em;
     word-wrap: break-word;
+
     .widget-title {
-      position: relative;
-      border-bottom: 1px solid #e8e8e8;
-      padding-bottom: 4px;
-      &:before {
-        content: "";
-        position: absolute;
-        width: 60px;
-        bottom: -1px;
-        border-bottom: 1px solid #e54e53;
-      }
+      margin: 0;
+      padding: 5px 10px;
+      font-size: .88rem;
+      font-weight: 400;
+      border-left: 5px solid #169fe6;
+      color: #fff;
+      background-color: #4c4c4c;
     }
+
     .widget-content {
+      border: 1px solid #e3e3e3;
+      border-top: none;
+      font-size: .9rem;
+
       ul {
         list-style: none;
+        margin: 0;
+        padding: 0;
       }
-      span {
-        display: inline-block;
+
+      li {
+        display: block;
+        height: 35px;
+        line-height: 35px;
+        border-bottom: 1px solid #e3e3e3;
+        padding: 0 10px;
+        color: #4c4c4c;
+
+        &:last-child {
+          border-bottom: none;
+        }
       }
+
       a {
         color: #e54e53;
         &:hover {
           text-decoration: underline;
         }
       }
-      .archive-list {
-        height: 200px;
-        overflow-y: auto;
-      }
-      .post-list-item,
-      .archive-list-item {
-        padding: 5px 0;
-      }
+
       .post-list-link,
       .archive-list-link {
         color: #777;
+
         &:before {
           display: inline-block;
           padding-right: 5px;
           font-family: "bdfont" !important;
-          font-size: 14px;
           content: "\e009";
           vertical-align: middle;
         }
@@ -93,6 +101,7 @@
           text-decoration: underline;
         }
       }
+
       .archive-list-count {
         padding-left: 5px;
         color: #999;
@@ -103,33 +112,21 @@
           content: ')';
         }
       }
-      .tag-link {
-        display: inline-block;
-        margin-bottom: 0.5em;
-        padding: 0.1em 0.5em;
-        border: 1px solid #eee;
-        border-radius: 2px;
-        background-color: #fff;
-        color: #777;
-        &:hover {
-          color: #e54e53;
-          text-decoration: underline;
-        }
-      }
-      .item {
-        width: 32%
-      }
-      .wrapper {
-        display: inline-block;
-        width: 65%;
-        height: 18px;
-        vertical-align: middle;
-        border-radius: 10px;
-        background: #ccc;
-        .inner {
+
+      #tags-ball {
+        position: relative;
+        padding-top: 100%;
+
+        canvas {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
           height: 100%;
-          background: #e54e53;
-          border-radius: 10px;
+
+          &.hover {
+            cursor: pointer;
+          }
         }
       }
     }

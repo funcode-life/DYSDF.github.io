@@ -4,18 +4,19 @@ mixin home()
 
 mixin post()
   - var prev = page.prev ? page.prev.path : false;
-  - var next = page.next ? page.next.path : false; 
-  .post-paginator
-    .post-links
-      if prev
-        .post-prev
-          a.prev(href=url_for(prev))
-            != __('prev_post')
-            span
-              != page.prev.title
-      if next
-        .post-next
-          a.next(href=url_for(next))
-            != __('next_post')
-            span
-              != page.next.title
+  - var next = page.next ? page.next.path : false;
+  if prev || next
+    .post-paginator
+      .post-links
+        if prev
+          .post-prev
+            a.prev(href=url_for(prev))
+              != __('prev_post')
+              span
+                != page.prev.title
+        if next
+          .post-next
+            a.next(href=url_for(next))
+              != __('next_post')
+              span
+                != page.next.title

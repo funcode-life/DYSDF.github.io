@@ -94,7 +94,7 @@ var searchFunc = function (path, search_id, content_id) {
  */
 var inputArea = document.querySelector("#local-search-input");
 var getSearchFile = function () {
-  var path = "/search.xml";
+  var path = "search.xml";
   searchFunc(path, 'local-search-input', 'local-search-result');
 }
 
@@ -104,20 +104,24 @@ inputArea.onfocus = function () { getSearchFile() }
 /**
  * Reset search
  */
+var $searchForm = $("#search-form");
 var $resetButton = $("#local-search-reset");
 var $resultArea = $("#local-search-result");
 
 inputArea.oninput = function () {
   if (inputArea.value) {
     $resetButton.show();
+    $searchForm.addClass('searching')
   } else {
     $resetButton.hide();
+    $searchForm.removeClass('searching')
   }
 }
 resetSearch = function () {
   $resultArea.html("");
   document.querySelector("#search-form").reset();
   $resetButton.hide();
+  $searchForm.removeClass('searching')
 }
 
 

@@ -1,32 +1,12 @@
-.main {
-  margin: 30px 0;
-  overflow: hidden;
-}
-
-.container {
-  max-width: 700px;
-  padding: 0 20px;
-  margin: auto;
-  transition: all 0.5s ease-in-out 0s;
-  .content {
-    padding-bottom: 1em;
-  }
-}
-
 @media screen and (min-width: 1024px) {
-  .container {
-    max-width: 980px;
-    padding: 0;
-    overflow: hidden;
-    .content {
-      float: left;
-      width: 65.3062%;
-      margin: 0;
-    }
-    .sidebar {
-      float: right;
-      width: 30.6123%;
-    }
+  .content {
+    float: left;
+    width: 65.3062%;
+    margin: 0;
+  }
+  .sidebar {
+    float: right;
+    width: 30.6123%;
   }
 }
 
@@ -36,17 +16,27 @@
   }
 }
 
+@media screen and (max-width: 1160px) {
+  body {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width: 800px) {
+  body {
+    margin: 0;
+  }
+
   .site-banner {
     display: none !important;
   }
-  .site-nav .container {
+  .site-nav .nav-list {
     position: fixed;
     top: 46px;
     left: -200px;
+    bottom: 0;
     width: 200px;
-    padding: 0;
-    margin: 0;
     background: #222;
     z-index: 999;
     transition: left .5s;
@@ -54,29 +44,10 @@
       display: block;
     }
   }
-  .post-thumbnail {
-    float: left;
-    max-width: 30%;
-    margin: 0 20px 0 0;
-  }
-  .post-header,
-  .post-excerpt {
-    margin-left: calc(30% + 20px);
-  }
 }
 
 @media screen and (max-width: 480px) {
-  .post-thumbnail {
-    display: none;
-  }
-  .post-header,
-  .post-excerpt {
-    margin-left: 0;
-  }
 }
 
 @media screen and (max-width: 360px) {
-  .post-excerpt {
-    display: none;
-  }
 }

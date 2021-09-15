@@ -10,19 +10,27 @@ script(src=url_for("/js/utils.js"))
 //- search.js
 script(src=url_for("/js/search.js"))
 
+//- tags ball.js
+script(src=url_for("/js/tags_ball.js"))
+- var tags_json = JSON.stringify(site.tags.map(function(tag) { return { name: tag.name, href: url_for(tag.path) } }))
+  script.
+    $.initTags(document.querySelector('#tags-ball canvas'), !{tags_json})
+
+// busuanzi
+script(async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js")
+
 //- LaTex
-script(async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML")
+//- script(async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML")
 
 //- uyan
-script(type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=#{theme.uyan}")
+//- script(type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=#{theme.uyan}")
 
 //- Analytics tracking
-- var ga = theme.ga
-if ga
-  script
-    | (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',
-    != '"' + ga + '"'
-    | ,'auto');ga('send','pageview');
+//- - var ga = theme.ga
+//- if ga
+//-   script
+//-     | (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',
+//-     != '"' + ga + '"'
+//-     | ,'auto');ga('send','pageview');
 
-script(src="https://cdn1.lncld.net/static/js/av-mini-0.6.10.js")
-script(src="http://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-lc-0.2.0.js")
+//- script(src="https://cdn1.lncld.net/static/js/av-mini-0.6.10.js")
