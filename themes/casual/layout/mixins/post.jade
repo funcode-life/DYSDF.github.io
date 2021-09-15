@@ -1,0 +1,67 @@
+//- Index Page
+mixin posts()
+  .post-list
+    - page.posts.each(function (item) {
+    article.post-list-article
+      figure.post-thumbnail
+        - if (item.bgimage)
+          a(href= url_for(item.path))
+            img(src=item.bgimage)
+        - else
+          a(href= url_for(item.path))
+            img(src= url_for("image/default_thumbnail.jpg"))
+      header.post-header
+        .post-meta
+          span.post-date
+            != full_date(item.date, 'll')
+          span.post-tag
+            - if (item.tags.length)
+              a(href= url_for(item.tags.toArray()[0].path))
+                != item.tags.toArray()[0].name
+        h3.post-title
+          a(href= url_for(item.path))
+            != item.title
+      .post-excerpt
+        != item.excerpt
+    - })
+
+//- Archive | Tags Page
+mixin postList()
+  .article-post-list
+    - var year = 0;
+    - var change = false;
+    - page.posts.each(function (item) {
+        - var itemYear = date(item.date, 'YYYY') - 0;
+        - change = year !== itemYear;
+        - year = change ? itemYear : year;
+        if change 
+          h2.archive-year!=year
+        article.post-list-article
+          span.post-date
+            != full_date(item.date, 'MMMM Do')
+          span.post-title
+            a(href= url_for(item.path))
+              != item.title
+    - })
+
+//- Post Page
+mixin post(item)
+  .post
+    article.post-block
+      h1.post-title
+        != item.title
+      span.post-date
+        != full_date(item.date, 'll')
+      if item.tags && item.tags.length
+        span.post-tag
+          each tag in item.tags.toArray()
+            a(href= url_for(tag.path))
+              != tag.name
+      span.post-review
+        != "阅读次数 : "
+        span(data-hk-page="current") -
+      - if (item.bgimage)
+        img.bgimage(src=item.bgimage)
+      .post-content
+        != item.content
+        

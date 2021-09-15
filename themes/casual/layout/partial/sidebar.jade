@@ -1,0 +1,25 @@
+include social
+
+div.recent-posts.widget
+  h3.widget-title 
+    != __('recent.posts')
+  .widget-content
+    != list_posts({amount:5})
+
+div.recent-comment.widget
+  h3.widget-title 
+    != __('recent.comments')
+  .widget-content
+    div(id="uyan_newcmt_unit")
+
+div.tag-lists.widget
+  h3.widget-title 
+    != __('tags')
+  .widget-content
+    != list_tags({style:a, separator:' ', show_count:false})
+
+div.archive-lists.widget
+  h3.widget-title 
+    != __('archive')
+  .widget-content
+    != list_archives()

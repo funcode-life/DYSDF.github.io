@@ -1,0 +1,137 @@
+.sidebar {
+  .social-links {
+    margin-bottom: 25px;
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    .social-link {
+      display: inline-block;
+      a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin: 0 8px;
+        border-radius: 50%;
+        text-align: center;
+        .icon {
+          line-height: 30px;
+          color: #fff;
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+      .link-github {
+        background-color: #888;
+      }
+      .link-twitter {
+        background-color: #00aced;
+      }
+      .link-weibo {
+        background-color: #dd4b39;
+      }
+      .link-mail {
+        background-color: rgb(75, 191, 107);
+      }
+    }
+  }
+  .widget {
+    margin: 0 0 20px 0;
+    padding: 20px;
+    border-radius: 2px;
+    color: #555;
+    background: #f6f6f6;
+    font-size: 0.933em;
+    word-wrap: break-word;
+    .widget-title {
+      position: relative;
+      border-bottom: 1px solid #e8e8e8;
+      padding-bottom: 4px;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 60px;
+        bottom: -1px;
+        border-bottom: 1px solid #e54e53;
+      }
+    }
+    .widget-content {
+      ul {
+        list-style: none;
+      }
+      span {
+        display: inline-block;
+      }
+      a {
+        color: #e54e53;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .archive-list {
+        height: 200px;
+        overflow-y: auto;
+      }
+      .post-list-item,
+      .archive-list-item {
+        padding: 5px 0;
+      }
+      .post-list-link,
+      .archive-list-link {
+        color: #777;
+        &:before {
+          display: inline-block;
+          padding-right: 5px;
+          font-family: "bdfont" !important;
+          font-size: 14px;
+          content: "\e009";
+          vertical-align: middle;
+        }
+        &:hover {
+          color: #e54e53;
+          text-decoration: underline;
+        }
+      }
+      .archive-list-count {
+        padding-left: 5px;
+        color: #999;
+        &:before {
+          content: '(';
+        }
+        &:after {
+          content: ')';
+        }
+      }
+      .tag-link {
+        display: inline-block;
+        margin-bottom: 0.5em;
+        padding: 0.1em 0.5em;
+        border: 1px solid #eee;
+        border-radius: 2px;
+        background-color: #fff;
+        color: #777;
+        &:hover {
+          color: #e54e53;
+          text-decoration: underline;
+        }
+      }
+      .item {
+        width: 32%
+      }
+      .wrapper {
+        display: inline-block;
+        width: 65%;
+        height: 18px;
+        vertical-align: middle;
+        border-radius: 10px;
+        background: #ccc;
+        .inner {
+          height: 100%;
+          background: #e54e53;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}

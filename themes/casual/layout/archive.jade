@@ -1,0 +1,22 @@
+extends partial/layout
+
+block site_title
+  != __('archive') + " | " + config.title
+
+block header
+  header.site-header
+    include partial/search
+
+block content
+  include mixins/post
+  +postList()
+
+block sidebar
+  include partial/sidebar
+
+block pagination
+  include mixins/paginator
+  +home()
+
+block copyright
+  include partial/footer

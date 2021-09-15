@@ -1,0 +1,37 @@
+menu:
+  home: /
+  archive: /archives
+  about: /about
+  rss: /atom.xml
+
+banner: /image/banner.jpg
+avatar: /avatar.png
+favicon: /favicon.ico
+weixin: /weixin.jpg
+
+social:
+  github: http://github.com/littlewin-wang
+  twitter: http://twitter.com/littlewin_wang
+  weibo: http://weibo.com/fredinweibo
+  mail: mailto:littlewin.wang@gmail.com
+
+# Comment
+# e.g uyan: 2128137
+uyan: 2128137
+
+# Analytics
+# google-analytics:
+ga: UA-92791318-1
+
+# Copyright Infomation
+startyear: 2016
+
+# Support hexo-renderer-scss
+node_sass:
+  debug: false
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
+
+# Resume related
+resume:

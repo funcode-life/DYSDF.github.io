@@ -1,0 +1,27 @@
+doctype
+html(lang=config.language)
+  head
+    meta(charset="utf-8")
+    meta(name="X-UA-Compatible", content="IE=edge")
+    title 
+      != __('resume') + " | " + config.title
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="short icon", href=url_for(theme.favicon))
+    link(rel="stylesheet", href=url_for("scss/casual.css"))
+    link(rel="stylesheet", href=url_for("css/icon.css"))
+  body
+    .wrapper
+      .resume
+        .post-content.resume-content
+          != page.content
+        .right-sticky
+          ul
+            li
+              i.icon.icon-weixin
+              img(src=theme.weixin)
+            li
+              input(type="button" value="PDF" onclick="window.print()")
+
+//- buttons.js
+<!-- Place this tag in your head or just before your close body tag. -->
+script(async defer src="https://buttons.github.io/buttons.js")
