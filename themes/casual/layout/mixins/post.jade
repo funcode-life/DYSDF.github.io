@@ -34,7 +34,7 @@ mixin postList()
         - var itemYear = date(item.date, 'YYYY') - 0;
         - change = year !== itemYear;
         - year = change ? itemYear : year;
-        if change 
+        if change
           h2.archive-year!=year
         article.post-list-article
           span.post-date
@@ -64,4 +64,3 @@ mixin post(item)
         img.bgimage(src=item.bgimage)
       .post-content
         != item.content
-        

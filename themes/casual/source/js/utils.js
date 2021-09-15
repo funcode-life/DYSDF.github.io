@@ -60,6 +60,6 @@
  */
 $(document).ready(function() {
   setTimeout(function() {
-    $('.site-banner').addClass('shrink')
+    $('body').removeClass('is-home')
   }, 1000)
 })

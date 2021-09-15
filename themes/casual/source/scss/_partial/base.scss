@@ -28,6 +28,31 @@ body {
   line-height: 1.6;
   box-shadow: 0 0 10px #afafaf;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  &.is-home {
+    header {
+      .site-banner {
+        height: calc(100vh - 60px);
+
+        &__title {
+          min-width: 0;
+          font-size: 3rem;
+        }
+      }
+
+      .site-nav {
+        display: none;
+      }
+    }
+
+    .main {
+      display: none;
+    }
+
+    footer {
+      display: none;
+    }
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -91,8 +116,8 @@ a.scroll-up {
   position: fixed;
   width: 40px;
   height: 40px;
-  bottom: 20px;
-  right: 20px;
+  bottom: 64px;
+  right: 64px;
   background-color: #e54e53;
   color: #fff;
   cursor: pointer;
@@ -108,14 +133,6 @@ a.scroll-up {
 
 hr {
   border: 0;
-}
-
-code {
-  margin: 0 2px;
-  padding: 3px 5px;
-  color: #e96900;
-  border-radius: 2px;
-  white-space: inherit;
 }
 
 iframe, video {

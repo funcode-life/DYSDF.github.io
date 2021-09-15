@@ -1,6 +1,7 @@
-header.site-header
-  figure.site-banner(style={'background-image': 'url(' + url_for(theme.banner) + ')'})
-    h3.site-title
-      a(href=url_for() data-text=config.title)
-        != config.title
-  include search
+figure.site-banner(
+  style={'background-image': 'url(' + url_for(theme.banner) + ')'}
+)
+  div.site-banner__wrapper
+    h3.site-banner__title
+      a(href=url_for() data-text=config.title)= config.title
+include nav_bar
