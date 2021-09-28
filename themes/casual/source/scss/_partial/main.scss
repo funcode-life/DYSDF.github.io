@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .main {
   padding: 20px;
   overflow: hidden;
@@ -102,6 +104,38 @@
   &__review {
     margin-right: 15px;
     color: #999;
+  }
+
+  &__readmore {
+    position: absolute;
+    right: -10px;
+    bottom: 5px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+    font-size: .8rem;
+    color: #f6f6f6;
+    background: lighten($bg-reverse-color, 10%);
+    box-shadow: -2px 2px 4px lighten($bg-reverse-color, 10%);
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -4px;
+      border-width: 2px 5px;
+      border-style: solid;
+      border-color: $bg-reverse-color transparent transparent $bg-reverse-color;
+    }
+
+    &:hover {
+      background: lighten($bg-reverse-color, 15%);
+    }
+
+    &:focus {
+      color: #fff;
+      background: $bg-reverse-color;
+    }
   }
 }
 

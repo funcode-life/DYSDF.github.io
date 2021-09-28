@@ -2,7 +2,6 @@ menu:
   home: /
   archive: /archives
   about: /about
-  rss: /atom.xml
 
 banner: /image/banner.jpg
 avatar: /avatar.png
@@ -13,7 +12,8 @@ social:
   github: https://github.com/DYSDF
   # twitter: http://twitter.com/littlewin_wang
   # weibo: http://weibo.com/fredinweibo
-  mail: mailto:admin@duan-ya.com
+  envelope: mailto:admin@duan-ya.com
+  rss: /atom.xml
 
 # Comment
 # e.g uyan: 2128137

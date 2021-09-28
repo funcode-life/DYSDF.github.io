@@ -3,6 +3,11 @@
     each value, key in theme.social
       - var re = /^(http|https):\/\/*/gi;
       - var tar = re.test(value) ? "_blank" : "_self"
-      li.social-link
-        a(href=url_for(value) target=tar class='link-#{key}')
-          i(class='icon icon-#{key}')
+      li
+        a(
+          href=url_for(value)
+          target=tar
+          title=__(key)
+          class='link-#{key}'
+        ).social-link
+          i(class='fa fa-#{key}')
