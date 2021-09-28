@@ -2,6 +2,7 @@
 title: 线程与进程的简单解释
 author: 断崖上的风
 date: 2021-09-27 16:24:20
+banner: banner.jpg
 category: 计算机
 tags:
   - 计算机
@@ -14,8 +15,6 @@ tags:
 最近，因为一些事情又牵扯到它们了，网上也查阅了一些资料文章，所以写一篇博客总结记录一下。
 
 <!-- more -->
-
-![线程与进程](banner.jpg)
 
 ### CPU
 

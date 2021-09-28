@@ -51,6 +51,8 @@ mixin postList()
 //- Post Page
 mixin post(item)
   .post-item
+    - if (item.banner)
+      img.banner(src=item.banner)
     article.post-article
       .post-article__header
         h3.post-article__title
@@ -74,7 +76,5 @@ mixin post(item)
             span
               span 阅读次数:
               span#busuanzi_value_page_pv -
-      - if (item.bgimage)
-        img.bgimage(src=item.bgimage)
       .post-content
         != item.content
