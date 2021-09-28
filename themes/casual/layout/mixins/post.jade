@@ -27,6 +27,8 @@ mixin posts()
                   != tag.name
         .post-article__excerpt
           != (item.excerpt || '').replace(/<\/?[^>]+>/, '')
+        a(href = url_for(item.path)).post-article__readmore
+          != __('read more')
     - })
 
 //- Archive | Tags Page
