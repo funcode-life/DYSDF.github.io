@@ -1,0 +1,65 @@
+---
+title: 使用 Nginx 对 WebSocket 做反向代理
+author: 断崖上的风
+date: 2021-09-29 17:03:12
+category: Nginx
+tags:
+  - Nginx
+  - WebSocket
+---
+
+>  Websocket 协议为客户端与服务端相互通信提供了一种方式，因为其基于 HTTP 协议扩展而来，所以 WebSocket 的握手和 HTTP 中的握手兼容，通过使用 HTTP 中的 Upgrade 协议头将连接从 HTTP 升级到 WebSocket。这使得 WebSocket 程序可以更容易的使用现已存在的网络基础设施。
+
+通常在实际的生产环境中，为保证 HTTP 服务具有高性能和高可用，一般使用 Nginx 作为负载均衡层。而 Nginx 从1.3版本开始支持 WebSocket，其可以为 WebSocket 服务做代理和负载均衡。这篇文章将对反代传统 HTTP 服务的 Nginx 配置进行一些修改调整，使其支持后端的 Websocket 服务。
+
+关于 Websocket 的更多介绍可参考{% post_link 003.websocket 我之前的文章 %}。
+
+<!-- more -->
+
+### 常规配置
+
+这是最简单的、可以代理 WebSocket 的配置，如下所示：
+```
+location /ws/ {
+  proxy_pass http://backend_server;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection "upgrade";
+}
+```
+
+通过配置可以看出，对所有的请求都会附带上 Connection=Upgrade 的请求头，这对于 WebSocket 来说是必要的，因为它需要借助 HTTP 进行协议升级，但是对于普通的 HTTP 请求来说，它是多余的。
+
+所以使用这个配置，如果代理的连接都为 WebSocket 协议是没有问题的，但是通常我们的 WebSocket 服务都是作为 HTTP 服务的一部分存在的，不会单独有自己的域名地址或服务器。
+
+这就需要我们改造现有的配置，使其既能支持 HTTP，也能支持WebSocket。
+
+### 兼容配置
+
+通过对 Nginx 官方文档的阅读，我们知道了 map 指令，通过它，就可以做到既支持 ws 请求，又支持 http 请求。
+
+```
+map $http_upgrade $connection_upgrade {
+  default upgrade;
+  ''      close;
+}
+
+server {
+  ...
+
+  location /ws/ {
+    proxy_pass http://backend_server;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+  }
+}
+```
+
+注意增加的配置部分，最重要的是对 `Connection Header` 进行了`动态取值`，它不再是`固定值“upgrade”`，其它的部分和普通的HTTP反向代理没有任何差别。
+
+原理就是通过 Nginx 的 `map` 指令，根据 HTTP 请求中是否存在 `Upgrade Header` 来决定 `Connection` 是否要取值“upgrade”，也就是这个连接是否要进行协议升级。
+
+### 参考
+
+- [WebSocket proxying](http://nginx.org/en/docs/http/websocket.html)
