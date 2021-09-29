@@ -40,6 +40,10 @@
     font-size: .8rem;
     color: white;
     background-color: #4c4c4c;
+
+    .fa {
+      margin-right: 5px;
+    }
   }
 
   &__title {
@@ -116,7 +120,8 @@
     font-size: .8rem;
     color: #f6f6f6;
     background: lighten($bg-reverse-color, 10%);
-    box-shadow: -2px 2px 4px lighten($bg-reverse-color, 10%);
+    box-shadow: -1px 1px 2px lighten($bg-reverse-color, 40%);
+    transition: box-shadow 300ms;
 
     &::after {
       content: "";
@@ -130,6 +135,7 @@
 
     &:hover {
       background: lighten($bg-reverse-color, 15%);
+      box-shadow: -2px 2px 4px lighten($bg-reverse-color, 20%);
     }
 
     &:focus {
@@ -170,7 +176,7 @@
 img.banner {
   display: block;
   max-width: 100%;
-  margin-bottom: 1em;
+  margin: 0 auto 1em;
 }
 
 .post-content {
