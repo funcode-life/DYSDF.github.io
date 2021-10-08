@@ -54,12 +54,3 @@
     });
   });
 });
-
-/**
- * Home Banner
- */
-$(document).ready(function() {
-  setTimeout(function() {
-    $('body').removeClass('is-home')
-  }, 1000)
-})
