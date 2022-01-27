@@ -103,6 +103,10 @@
     p {
       margin: 0;
     }
+
+    li {
+      list-style: none;
+    }
   }
 
   &__review {
@@ -169,6 +173,42 @@
       background: transparent;
       color: inherit;
       font-size: inherit;
+    }
+  }
+}
+
+.article-post-list {
+  .post-article {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border: none;
+
+    &__date {
+      display: inline-block;
+      position: relative;
+      height: 20px;
+      line-height: 20px;
+      margin-right: 20px;
+      padding: 0 5px 0 10px;
+      font-size: 0.8rem;
+      color: white;
+      background-color: #169fe6;
+
+      &::before {
+        content: ' ';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-left: 10px solid #169fe6;
+        top: 0;
+        right: -20px;
+      }
+    }
+
+    &__title {
+      font-weight: normal;
+      font-size: .9rem;
     }
   }
 }
@@ -308,6 +348,7 @@ code, pre {
     padding: 1em .5em;
     color: burlywood;
     border-right: 1px solid #595959;
+    text-align: right;
   }
   pre {
     line-height: 1.5em;
