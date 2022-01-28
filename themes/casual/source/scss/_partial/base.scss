@@ -158,6 +158,18 @@ table {
   }
 }
 
+code {
+  margin: 0 0.25em;
+  padding: 0.2em 0.25em;
+  border-radius: 3px;
+  color: #cd3136;
+  background-color: #f0f0f0;
+}
+
+pre > code {
+  margin: 0;
+}
+
 @keyframes noise-anim {
   0% {
     clip: rect(55px, 9999px, 9px, 0);
